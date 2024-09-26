@@ -1,6 +1,6 @@
 import "@mantine/core/styles.css";
 
-import { MantineProvider, ColorSchemeScript } from "@mantine/core";
+import { ColorSchemeScript } from "@mantine/core";
 import {
   Links,
   Meta,
@@ -8,6 +8,13 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+import AppProvider from "providers/AppProvider";
+
+import "@mantine/notifications/styles.css";
+import "@mantine/nprogress/styles.css";
+import "@mantine/tiptap/styles.css";
+import "@mantine/spotlight/styles.css";
+import "@mantine/code-highlight/styles.css";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -20,7 +27,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <ColorSchemeScript />
       </head>
       <body>
-        <MantineProvider>{children}</MantineProvider>
+        <AppProvider>{children}</AppProvider>
         <ScrollRestoration />
         <Scripts />
       </body>
