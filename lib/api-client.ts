@@ -1,5 +1,7 @@
 import Axios from "axios";
 
+import { notifications } from "@mantine/notifications";
+
 import { API_URL } from "config/constants";
 
 export const apiClient = Axios.create({
@@ -17,5 +19,11 @@ apiClient.interceptors.response.use(
     const message = error.response?.data?.message || error.message;
 
     console.error(`error : ${message}`);
+    notifications.show({
+      title: "Error",
+      message,
+      color: "red",
+      autoClose: 5000,
+    });
   }
 );
